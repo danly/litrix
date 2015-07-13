@@ -7,14 +7,38 @@
   <h1>No one logged in</h1>
 <% end %>
 
+
+
+<div class="matrixContainer">
+<!-- this gives me full rows of years -->
+<% @user.age.times do |year| %>
+  <div id="year<%=year%>">
+  <% 52.times do |week| %>
+    <div class="week lived"></div>
+  <% end %>
+  </div>
+<% end %>
+<!-- this gives me the extra left over years -->
+<% @leftOverWeeksLived.times do |leftWeek| %>
+  <div class="week lived"></div>
+<% end %>
+<!-- this gives me the remaining weeks that have not been lived -->
+<% @notLivedWeeks.times do |notLivedWeek| %>
+  <div class="week"></div>
+<% end %>
+</div>
+
+
+
+
+
+
+
+
+<!-- not rendering on redirect -->
 <div ng-app="UserApp">
-  <div ng-controller="MatrixController">
+  <div ng-controller="MatrixController" data-ng-cloak>
     {{greeting}}
-
-
-    {{user}}
-
-
-
   </div>
 </div>
+

@@ -7,5 +7,9 @@ class MainController < ApplicationController
       @user.total_weeks = @user.total_life*52
       @user.save
     end
+
+    @leftOverWeeksLived = @user.current_weeks - (@user.age*52)
+
+    @notLivedWeeks = @user.total_weeks - @user.current_weeks
   end
 end

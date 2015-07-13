@@ -20,7 +20,6 @@
 var UserApp = angular.module("UserApp", [])
 
 UserApp.controller("MatrixController", ["$scope", "$http", function($scope, $http){
-  
-  $scope.greeting = "Hello World"
-
+    $scope.greeting = "Hello World"
+    
 }])
