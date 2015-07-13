@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.age = current_age(@user.birthdate)
-    @user.current_weeks = @user.age*52
+    @user.current_weeks = current_weeks(@user.birthdate)
 
     #hardcoded for now
     @user.total_life = 100
@@ -51,7 +51,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @user.update(edit_params)
+      if @user.update(user_params)
+        @user.age = current_age(@user.birthdate)
+        @user.current_weeks = current_weeks(@user.birthdate)
+        @user.save
         format.html { redirect_to root_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -81,7 +84,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :first_name, :last_name, :gender, :country, :password, :password_confirmation, :email, :birthdate)
     end
-    def edit_params
-      params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation, :email)
-    end
+
 end
