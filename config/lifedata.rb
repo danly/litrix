@@ -1,5 +1,4 @@
-
-{
+lifedata = {
   "dimension": [
                  {
                    "label": "GHO",
@@ -75765,3 +75764,6 @@
            }
           ]
 }
+
+
+puts foo["fact"]
