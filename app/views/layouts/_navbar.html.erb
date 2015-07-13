@@ -1,0 +1,22 @@
+<!-- delete this later -->
+<h2>
+<%= link_to "Home", root_path %>
+<%= link_to "All Users", users_path %>
+</h2>
+
+<% if current_user == nil %>
+  <!-- LOGIN FORM IF NOT LOGGED IN -->
+  <li>
+    <%= link_to "Create Account", new_user_path %>    
+  </li>
+  <li>
+    <%= link_to "Login", login_path %>
+  </li>
+<% else %>
+  <!-- USER PROFILE IF LOGGED IN -->
+  <%= current_user.username %>
+  <%= current_user.email %>
+  <li>
+    <%= link_to "Log Out", logout_path , method: 'delete'  %> 
+  </li>
+<% end %>

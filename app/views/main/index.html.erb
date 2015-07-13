@@ -2,7 +2,52 @@
 <p>Find me in app/views/main/index.html.erb</p>
 
 <% if current_user %>
- <h1><%= @user.username %> is logged in </h1>
+  <h1><%= @user.username %> is logged in </h1>
 <% else %>
   <h1>No one logged in</h1>
 <% end %>
+
+
+
+
+<% unless current_user == nil %>
+  <div class="matrixContainer">
+  <!-- this gives me full age -->
+    <% (@user.age).times do |year| %>
+      <div id="year<%= year %>">
+        <% 52.times do |week| %>
+          <div id="week<%= (week+1) + (year*52)%>" class="week lived"></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div id="year<%= @user.age %>">
+      <% @leftOverWeeksLived.times do |left| %>
+          <div id="week<%= (left+1) + ((@user.age)*52)%>" class="week lived"></div>
+      <% end %>
+      <% (52-@leftOverWeeksLived).times do |left| %>
+          <div id="week<%= (left+1+@leftOverWeeksLived) + ((@user.age)*52)%>" class="week"></div>
+      <% end %>
+    </div>
+
+    <% (@user.total_life-@user.age-1).times do |year| %>
+      <div id="year<%= @user.age+1 + year %>">
+        <% 52.times do |week| %>
+          <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week"></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<!-- might have issues with older than average death age -->
+
+
+<!-- not rendering on redirect -->
+<div ng-app="UserApp">
+  <div ng-controller="MatrixController">
+  {{1 + 1}}
+    {{greeting}}
+  </div>
+</div>
+
