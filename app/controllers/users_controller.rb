@@ -21,10 +21,17 @@ class UsersController < ApplicationController
   def edit
   end
 
+
+  def age(birthday)
+    now = Time.now.utc.to_date
+    now.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
+  end
+
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.age = age(@user.birthdate)
 
     respond_to do |format|
       if @user.save
@@ -70,6 +77,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :first_name, :last_name, :gender, :country, :password, :password_confirmation, :email)
+      params.require(:user).permit(:username, :first_name, :last_name, :gender, :country, :password, :password_confirmation, :email, :birthdate)
     end
 end
