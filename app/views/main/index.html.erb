@@ -9,29 +9,38 @@
 
 
 
-<div class="matrixContainer">
-<!-- this gives me full rows of years -->
-<% @user.age.times do |year| %>
-  <div id="year<%=year%>">
-  <% 52.times do |week| %>
-    <div class="week lived"></div>
-  <% end %>
+
+<% unless current_user == nil %>
+  <div class="matrixContainer">
+  <!-- this gives me full rows of years -->
+    <% (@user.age-1).times do |year| %>
+      <div id="year<%= year+1 %>">
+        <% 52.times do |week| %>
+          <div id="week<%= (week+1) + (year*52)%>" class="week lived"></div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div id="year<%= @user.age %>">
+      <% @leftOverWeeksLived.times do |left| %>
+          <div id="week<%= (left+1) + ((@user.age-1)*52)%>" class="week lived"></div>
+      <% end %>
+      <% (52-@leftOverWeeksLived).times do |left| %>
+          <div id="week<%= (left+1) + ((@user.age-1)*52)%>" class="week"></div>
+      <% end %>
+    </div>
+
+    <% (@user.total_life-@user.age).times do |year| %>
+      <div id="year<%= @user.age+1 + year %>">
+        <% 52.times do |week| %>
+          <div id="week<%= (week+1) + (year*52)%>" class="week"></div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>
-<!-- this gives me the extra left over years -->
-<% @leftOverWeeksLived.times do |leftWeek| %>
-  <div class="week lived"></div>
-<% end %>
-<!-- this gives me the remaining weeks that have not been lived -->
-<% @notLivedWeeks.times do |notLivedWeek| %>
-  <div class="week"></div>
-<% end %>
-</div>
 
-
-
-
-
+<!-- might have issues with older than average death age -->
 
 
 
