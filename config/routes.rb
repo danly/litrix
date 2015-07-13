@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :milestones
   root to: 'main#index'
 
   resources :users
