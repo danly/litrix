@@ -19,12 +19,13 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/1/edit
   def edit
+    @milestone = current_user.milestones.find(params[:id])
   end
 
   # POST /milestones
   # POST /milestones.json
   def create
-    @milestone = Milestone.new(milestone_params)
+    @milestone = current_user.milestones.new(milestone_params)
 
     respond_to do |format|
       if @milestone.save
