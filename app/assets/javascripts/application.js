@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require angular/angular
 //= require_tree .
+
+
+var UserApp = angular.module("UserApp", [])
+
+UserApp.controller("MatrixController", ["$scope", "$http", function($scope, $http){
+  
+  $scope.greeting = "Hello World"
+
+}])
