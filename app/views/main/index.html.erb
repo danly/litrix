@@ -30,7 +30,7 @@
       <% end %>
     </div>
 
-    <% (@user.total_life-@user.age).times do |year| %>
+    <% (@user.total_life-@user.age-1).times do |year| %>
       <div id="year<%= @user.age+1 + year %>">
         <% 52.times do |week| %>
           <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week"></div>
@@ -41,7 +41,6 @@
 <% end %>
 
 <!-- might have issues with older than average death age -->
-<!-- look at age+1 there is an error -->
 
 
 <!-- not rendering on redirect -->
