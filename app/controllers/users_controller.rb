@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.age = age(@user.birthdate)
-
+    @user.total_weeks = @user.age*52
     respond_to do |format|
       if @user.save
         login(@user)
