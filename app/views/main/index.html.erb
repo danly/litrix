@@ -12,9 +12,9 @@
 
 <% unless current_user == nil %>
   <div class="matrixContainer">
-  <!-- this gives me full rows of years -->
-    <% (@user.age-1).times do |year| %>
-      <div id="year<%= year+1 %>">
+  <!-- this gives me full age -->
+    <% (@user.age).times do |year| %>
+      <div id="year<%= year %>">
         <% 52.times do |week| %>
           <div id="week<%= (week+1) + (year*52)%>" class="week lived"></div>
         <% end %>
@@ -23,17 +23,17 @@
 
     <div id="year<%= @user.age %>">
       <% @leftOverWeeksLived.times do |left| %>
-          <div id="week<%= (left+1) + ((@user.age-1)*52)%>" class="week lived"></div>
+          <div id="week<%= (left+1) + ((@user.age)*52)%>" class="week lived"></div>
       <% end %>
       <% (52-@leftOverWeeksLived).times do |left| %>
-          <div id="week<%= (left+1) + ((@user.age-1)*52)%>" class="week"></div>
+          <div id="week<%= (left+1+@leftOverWeeksLived) + ((@user.age)*52)%>" class="week"></div>
       <% end %>
     </div>
 
     <% (@user.total_life-@user.age).times do |year| %>
       <div id="year<%= @user.age+1 + year %>">
         <% 52.times do |week| %>
-          <div id="week<%= (week+1) + (year*52)%>" class="week"></div>
+          <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week"></div>
         <% end %>
       </div>
     <% end %>
@@ -41,7 +41,7 @@
 <% end %>
 
 <!-- might have issues with older than average death age -->
-<!-- look at year 25 there is an error -->
+<!-- look at age+1 there is an error -->
 
 
 <!-- not rendering on redirect -->
