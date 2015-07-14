@@ -22,30 +22,26 @@
   }
 
   .week:hover {
+    z-index: 10px;
     transform: scale(2);
   }
 
-
-
-
-}
-
-
 .tooltip {
-  position: absolute;
-  background: pink;
+  position: relative;
+  background: black;
+  vertical-align: top;
   border: 2px solid gray;
   border-radius: 10px;
   box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.55);
   width: 250px;
   height: 150px;
 
-  button.close {
-    position: absolute;
-    right: 0px;
-    margin: 2px;
-    outline: none;
-  }
+  // button.close {
+  //   position: absolute;
+  //   right: 0px;
+  //   margin: 2px;
+  //   outline: none;
+  // }
 
 }
 
@@ -63,19 +59,6 @@
   transform: rotate(45deg);
 }
 
-.list {
-  background-color: green;
-  .item {
-    position: relative;
-    list-style-type: none;
-    .marker{
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      left: 0px;
-      background-color: purple;
-
-
-    }
-  }
 }
+
+
