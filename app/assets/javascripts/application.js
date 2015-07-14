@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular/angular
-//= require material-design-lite/material.min.js
 //= require_tree .
 
 
