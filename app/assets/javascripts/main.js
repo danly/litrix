@@ -23,14 +23,20 @@ function weekClick(){
       data.forEach(function(milestone, i) {
         //append each milestone for that week
         $tooltip = $(that).children('.tooltip')
-        $tooltip.append("<a href='/milestones/"+milestone.id+"'' data-milestone-id='"+milestone.id+"' class='lineItem'>"+milestone.title+"</a><br>")
+        $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
 
 
         $lineItem = $tooltip.children('.lineItem')
         $lineItem.hover(function(event){
+          //mouseenter
           event.stopPropagation();
-          milestoneId = $(this).data('milestone-id')
-          milestoneId
+          $toolNote = $(this).children('.toolNote')
+          $toolNote.fadeIn()
+        }, function(event){
+          //mouseleave
+          event.stopPropagation();
+          $toolNote = $(this).children('.toolNote')
+          $toolNote.fadeOut()
         })
       })
     })
