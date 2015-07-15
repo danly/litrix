@@ -15,28 +15,24 @@
     <% (@user.age).times do |year| %>
       <div id="year<%= year %>">
         <% 52.times do |week| %>
-          <div id="week<%= (week+1) + (year*52)%>" class="week lived">
-          </div>
+          <div id="week<%= (week+1) + (year*52)%>" class="week lived"></div>
         <% end %>
       </div>
     <% end %>
 
     <div id="year<%= @user.age %>">
       <% @leftOverWeeksLived.times do |left| %>
-          <div id="week<%= (left+1) + ((@user.age)*52)%>" class="week lived">
-          </div>
+          <div id="week<%= (left+1) + ((@user.age)*52)%>" class="week lived"></div>
       <% end %>
       <% (52-@leftOverWeeksLived).times do |left| %>
-          <div id="week<%= (left+1+@leftOverWeeksLived) + ((@user.age)*52)%>" class="week">
-          </div>
+          <div id="week<%= (left+1+@leftOverWeeksLived) + ((@user.age)*52)%>" class="week"></div>
       <% end %>
     </div>
 
     <% (@user.total_life-@user.age-1).times do |year| %>
       <div id="year<%= @user.age+1 + year %>">
         <% 52.times do |week| %>
-          <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week">
-          </div>
+          <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week"></div>
         <% end %>
       </div>
     <% end %>

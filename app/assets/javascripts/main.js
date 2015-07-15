@@ -1,31 +1,24 @@
 var ready = function(){
-
-  // $('.week').click(function() {
-  //   var weekId = parseInt(this.id.slice(4, this.id.length))
-  //   console.log(weekId)
-  // })
-
-
-
-  function weekClick() {
-    $('.week').click(function(){
-      $(this).off('click')
-      $(this).append("<div class='tooltip'><button class='close'>X</button></div>");
-      $('.close').click(function(){
-        $week = $(this).parents('.week')
-        $week.on('click', weekClick)
-        $tooltip = $(this).parent('.tooltip')
-        $tooltip.remove()
-      });
-    });
-  }
-  
-  weekClick();
-
-
+  $('.week').on('click', weekClick)
 }
 
+function isEmpty($element){
+  return($element.html() ==='')
+}
 
+function weekClick(){
+  if( isEmpty( $(this) ) ) {
+    $(this).append("<div class='tooltip'><button class='close'>X</button></div>");
+    $('.close').click(function(event){
+      event.stopPropagation();
+      $week = $(this).parent().parent()
+      $week.empty();
+    })
+  } else {
+    console.log('not empty')
+
+  }
+}
 
 $(function() {
   ready();
