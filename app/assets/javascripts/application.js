@@ -22,4 +22,3 @@ UserApp.controller("MatrixController", ["$scope", "$http", function($scope, $htt
     $scope.greeting = "Hello World"
 }])
 
-

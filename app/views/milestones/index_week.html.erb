@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Milestones</h1>
+<h1>Show by Week Milestones</h1>
 
 <table>
   <thead>
@@ -22,7 +22,6 @@
         <td><%= milestone.year %></td>
         <td><%= milestone.week %></td>
         <td><%= milestone.user_id %></td>
-        <td><%= link_to 'Show', milestone_path(milestone.id) %></td>
         <td><%= link_to 'Edit', edit_milestone_path(milestone.id) %></td>
         <td><%= link_to 'Destroy', milestone_path(milestone.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -32,4 +31,3 @@
 
 <br>
 
-<%= link_to 'New Milestone', new_milestone_path %>
