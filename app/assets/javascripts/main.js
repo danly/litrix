@@ -17,32 +17,38 @@ function weekClick(){
     weekId = this.id.slice(4,this.id.length)
     console.log(weekId)
 
-    var promise = $.getJSON("/weeks/"+weekId)
+    var promise = $.getJSON("/weeks/"+weekId, function (data){
+      console.log(data)
+    })
     //If success
     promise.done(function( data ){
-      data.forEach(function(milestone, i) {
-        //append each milestone for that week
-        $tooltip = $(that).children('.tooltip')
-        $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
+      if(data.length !== 0) {
+        data.forEach(function(milestone, i) {
+          //append each milestone for that week
+          $tooltip = $(that).children('.tooltip')
+          $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
 
 
-        $lineItem = $tooltip.children('.lineItem')
-        $lineItem.hover(function(event){
-          //mouseenter
-          event.stopPropagation();
-          $toolNote = $(this).children('.toolNote')
-          $toolNote.fadeIn()
-        }, function(event){
-          //mouseleave
-          event.stopPropagation();
-          $toolNote = $(this).children('.toolNote')
-          $toolNote.fadeOut()
+          $lineItem = $tooltip.children('.lineItem')
+          $lineItem.hover(function(event){
+            //mouseenter
+            event.stopPropagation();
+            $toolNote = $(this).children('.toolNote')
+            $toolNote.fadeIn()
+          }, function(event){
+            //mouseleave
+            event.stopPropagation();
+            $toolNote = $(this).children('.toolNote')
+            $toolNote.fadeOut()
+          })
         })
-      })
+      } else {
+          $(that).children('.tooltip').append("No Personal Milestones")
+      }
     })
 
     //If no data failure
-    promise.fail(function(errors){
+    promise.fail(function(){
       $(that).children('.tooltip').append("No Personal Milestones")
     })
 
