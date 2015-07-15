@@ -1,0 +1,25 @@
+<h1>Milestones by week for <%= current_user.username %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Note</th>
+      <th>Year</th>
+      <th>Week</th>
+      <th>Owner</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @milestones.each do |milestone| %>
+        <tr>
+          <td><%= milestone.title %></td>
+          <td><%= milestone.note %></td>
+          <td><%= milestone.year %></td>
+          <td><%= milestone.week %></td>
+          <td><%= milestone.user_id %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

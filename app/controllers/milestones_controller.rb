@@ -1,10 +1,19 @@
 class MilestonesController < ApplicationController
   before_action :set_milestone, only: [:show, :edit, :update, :destroy]
 
+
+  def index_week
+    @milestones = current_user.milestones.all
+  end
+
+  def show_week
+    @milestones = current_user.milestones.where(:week => params[:week])
+  end
+
   # GET /milestones
   # GET /milestones.json
   def index
-    @milestones = Milestone.all
+    @milestones = current_user.milestones.all
   end
 
   # GET /milestones/1
@@ -19,7 +28,6 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/1/edit
   def edit
-    @milestone = current_user.milestones.find(params[:id])
   end
 
   # POST /milestones
@@ -28,8 +36,9 @@ class MilestonesController < ApplicationController
     @milestone = current_user.milestones.new(milestone_params)
 
     respond_to do |format|
+
       if @milestone.save
-        format.html { redirect_to @milestone, notice: 'Milestone was successfully created.' }
+        format.html { redirect_to milestone_path(@milestone), notice: 'Milestone was successfully created.' }
         format.json { render :show, status: :created, location: @milestone }
       else
         format.html { render :new }
@@ -43,7 +52,7 @@ class MilestonesController < ApplicationController
   def update
     respond_to do |format|
       if @milestone.update(milestone_params)
-        format.html { redirect_to @milestone, notice: 'Milestone was successfully updated.' }
+        format.html { redirect_to milestone_path(@milestone.week), notice: 'Milestone was successfully updated.' }
         format.json { render :show, status: :ok, location: @milestone }
       else
         format.html { render :edit }
@@ -65,7 +74,7 @@ class MilestonesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_milestone
-      @milestone = Milestone.find(params[:id])
+      @milestone = current_user.milestones.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
