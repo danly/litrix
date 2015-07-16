@@ -18,14 +18,16 @@
         <% 52.times do |week| %>
 
           <% id = (week+1) + (year*52)%>
+          <% isMilestone = false %>
+
           <% if @arrayMilestones.length != 0 %>
 
             <% @arrayMilestones.length.times do |milestoneId| %>
 
               <% if @arrayMilestones[milestoneId] == id %>
                 <div id="week<%= id %>" class="week lived personal"></div>
-              <% else %>
-                <div id="week<%= id %>" class="week lived"></div>
+                <% isMilestone = true %>
+                <% break %>
               <% end %>
 
             <% end %>
@@ -33,7 +35,11 @@
           <% else %>
             <div id="week<%= id %>" class="week lived"></div>
           <% end %>
-          
+
+          <% if isMilestone == false && @arrayMilestones.length != 0 %>
+            <div id="week<%= id %>" class="week lived"></div>
+          <% end %>
+
         <% end %>
 
       </div>
@@ -42,13 +48,56 @@
     <div id="year<%= @user.age %>" class="year">
 
       <% @leftOverWeeksLived.times do |left| %>
-          <% id = (left+1) + ((@user.age)*52)%>      
-          <div id="week<%= id %>" class="week lived"></div>
+          <% id = (left+1) + ((@user.age)*52)%>    
+          <% isMilestone = false %>
+
+          <% if @arrayMilestones.length != 0 %>
+
+            <% @arrayMilestones.length.times do |milestoneId| %>
+
+              <% if @arrayMilestones[milestoneId] == id %>
+                <div id="week<%= id %>" class="week lived personal"></div>
+                <% isMilestone = true %>
+                <% break %>
+              <% end %>
+
+            <% end %>
+
+          <% else %>
+            <div id="week<%= id %>" class="week lived"></div>
+          <% end %>
+
+          <% if isMilestone == false && @arrayMilestones.length != 0 %>
+            <div id="week<%= id %>" class="week lived"></div>
+          <% end %>
+
       <% end %>
 
+      <!-- fill in the rest of the current year -->
       <% (52-@leftOverWeeksLived).times do |left| %>
           <% id = (left+1+@leftOverWeeksLived) + ((@user.age)*52) %>
-          <div id="week<%= id %>" class="week"></div>
+          <% isMilestone = false %>
+
+          <% if @arrayMilestones.length != 0 %>
+
+            <% @arrayMilestones.length.times do |milestoneId| %>
+
+              <% if @arrayMilestones[milestoneId] == id %>
+                <div id="week<%= id %>" class="week personal"></div>
+                <% isMilestone = true %>
+                <% break %>
+              <% end %>
+
+            <% end %>
+
+          <% else %>
+            <div id="week<%= id %>" class="week"></div>
+          <% end %>
+
+          <% if isMilestone == false && @arrayMilestones.length != 0 %>
+            <div id="week<%= id %>" class="week"></div>
+          <% end %>
+  
       <% end %>
 
     </div>
@@ -58,7 +107,28 @@
 
         <% 52.times do |week| %>
           <% id = (week+1) + (year*52) + ((@user.age+1)*52) %>
-          <div id="week<%= id %>" class="week"></div>
+          <% isMilestone = false %>
+
+          <% if @arrayMilestones.length != 0 %>
+
+            <% @arrayMilestones.length.times do |milestoneId| %>
+
+              <% if @arrayMilestones[milestoneId] == id %>
+                <div id="week<%= id %>" class="week personal"></div>
+                <% isMilestone = true %>
+                <% break %>
+              <% end %>
+
+            <% end %>
+
+          <% else %>
+            <div id="week<%= id %>" class="week"></div>
+          <% end %>
+
+          <% if isMilestone == false && @arrayMilestones.length != 0 %>
+            <div id="week<%= id %>" class="week"></div>
+          <% end %>
+
         <% end %>
 
       </div>
