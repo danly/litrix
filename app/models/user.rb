@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :milestones
+  has_many :datasets
 
   validates :birthdate, :timeliness => {:on_or_before => lambda { Date.current }, :type => :date}
 

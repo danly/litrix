@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   root to: 'main#index'
+
+  get 'datasets', to: 'datasets#index', as: 'datasets'
+  get 'datasets/new', to: 'datasets#new', as: 'new_dataset'
+  post 'datasets', to: 'datasets#create'
+  get 'datasets/:id', to: 'datasets#show', as: 'dataset'
+  get 'datasets/:id/edit', to: 'datasets#edit', as: 'edit_dataset' 
+  patch 'datasets/:id', to: 'datasets#update'
+  put 'datasets/:id', to: 'datasets#update'
+  delete 'datasets/:id', to: 'datasets#destroy'
+
   resources :lifedata
 
   resources :users
