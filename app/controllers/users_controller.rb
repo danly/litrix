@@ -16,11 +16,15 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    countriesFile = File.read('config/countries.rb')
+    @countries = JSON.parse(countriesFile)
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(current_user.id)
+    countriesFile = File.read('config/countries.rb')
+    @countries = JSON.parse(countriesFile)
   end
 
 
@@ -30,9 +34,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.age = current_age(@user.birthdate)
     @user.current_weeks = current_weeks(@user.birthdate)
-
-    #hardcoded for now
-    @user.total_life = 100
+    @lifedatum = Lifedatum.where(:country => @user.country).where(:gender => @user.gender)[0]
+    @user.total_life = @lifedatum.age
     @user.total_weeks = @user.total_life*52
 
     respond_to do |format|
@@ -52,6 +55,9 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        @lifedatum = Lifedatum.where(:country => @user.country).where(:gender => @user.gender)[0]
+        @user.total_life = @lifedatum.age
+        @user.total_weeks = @user.total_life*52
         @user.age = current_age(@user.birthdate)
         @user.current_weeks = current_weeks(@user.birthdate)
         @user.save

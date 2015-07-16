@@ -7,8 +7,7 @@
   <h1>No one logged in</h1>
 <% end %>
 
-
-
+<h2 class='result'>Nothing yet</h2>
 
 <% unless current_user == nil %>
   <div class="matrixContainer">
@@ -43,11 +42,4 @@
 <!-- might have issues with older than average death age -->
 
 
-<!-- not rendering on redirect -->
-<div ng-app="UserApp">
-  <div ng-controller="MatrixController">
-  {{1 + 1}}
-    {{greeting}}
-  </div>
-</div>
 

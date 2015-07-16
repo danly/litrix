@@ -31,16 +31,19 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.select :gender, [["Male", 1], ["Female", 2], ["Other", 3]], {:prompt => 'Select Gender'} %>
-  </div>  
+    <%= f.select :gender, [["Male", "Male"], ["Female", "Female"], ["Other", "Both sexes"]], {:prompt => 'Select Gender'} %>
+  </div>   
   <div class="field">
     <%= f.label "Birthday" %><br>
     <%= f.date_select :birthdate, :end_year => Date.current.year %>
   </div>  
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.collection_select :country, @countries, :to_s, :to_s, {:selected => current_user.country} %>
   </div>
+
+  <div>Password Change Optional</div>
+
   <div class="field">
     <%= f.label :Password %><br>
     <%= f.password_field :password %>

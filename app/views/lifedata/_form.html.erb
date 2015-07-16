@@ -1,0 +1,33 @@
+<%= form_for(@lifedatum) do |f| %>
+  <% if @lifedatum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lifedatum.errors.count, "error") %> prohibited this lifedatum from being saved:</h2>
+
+      <ul>
+      <% @lifedatum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :gho %><br>
+    <%= f.text_field :gho %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.text_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

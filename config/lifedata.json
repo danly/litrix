@@ -1,4 +1,4 @@
-lifedata = {
+{
   "dimension": [
                  {
                    "label": "GHO",
@@ -75764,6 +75764,3 @@ lifedata = {
            }
           ]
 }
-
-
-puts foo["fact"]
