@@ -9,7 +9,8 @@ function isEmpty($element){
 function weekClick(){
   if( isEmpty( $(this) ) ) {
     that = this
-    $(this).append("<div class='tooltip'><button class='close'>X</button><a href='/milestones/new/' class='newMilestone'>Add Milestone</a></div>");
+    var idOfWeek = this.id.slice(4, this.id.length)
+    $(this).append("<div class='tooltip'><button class='close'>X</button><a href='/milestones/new/"+idOfWeek+"' class='newMilestone'>Add Milestone</a></div>");
 
     // need to do a get to add data
     weekId = this.id.slice(4,this.id.length)

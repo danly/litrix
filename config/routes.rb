@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
-  resources :lifedata
   root to: 'main#index'
+  resources :lifedata
 
   resources :users
 
   get    'milestones',          to: 'milestones#index',     as: 'milestones'
   post   'milestones',          to: 'milestones#create'
-  get    'milestones/new',      to: 'milestones#new',       as: 'new_milestone'    
+  get    'milestones/new',      to: 'milestones#new',       as: 'new_milestone'   
+  get    'milestones/new/:week', to: 'milestones#new_milestone_by_week', as: 'new_milestone_by_week'
   get    'milestones/:id/edit', to: 'milestones#edit',      as: 'edit_milestone'
   get    'milestones/:id',      to: 'milestones#show',      as: 'milestone'
   put    'milestones/:id',      to: 'milestones#update'
   delete 'milestones/:id',      to: 'milestones#destroy'
 
   get    "weeks",               to: 'milestones#index_week', as: 'milestones_weeks'
-  get    "weeks/:week",         to: 'milestones#show_week', as: 'milestone_by_week'
+  get    "weeks/:week",         to: 'milestones#show_week',  as: 'milestone_by_week'
 
 
   get    'login',               to: 'sessions#new',        as: 'login'

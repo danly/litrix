@@ -10,6 +10,14 @@ class MilestonesController < ApplicationController
     @milestones = current_user.milestones.where(:week => params[:week])
   end
 
+  def new_milestone_by_week
+    @milestone = Milestone.new
+    @specificWeek = params[:week].to_i
+    @specificAge = @specificWeek/52
+    @ordinalWeek = ordinal(@specificWeek)
+    @yearText = ageYearText(@specificAge, @specificWeek)
+  end
+
   # GET /milestones
   # GET /milestones.json
   def index
@@ -28,13 +36,18 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/1/edit
   def edit
+    @milestone = current_user.milestones.find(params[:id])
+    @specificWeek = @milestone.week
+    @specificAge = @specificWeek/52
+    @ordinalWeek = ordinal(@specificWeek)
+    @yearText = ageYearText(@specificAge, @specificWeek)
   end
 
   # POST /milestones
   # POST /milestones.json
   def create
     @milestone = current_user.milestones.new(milestone_params)
-
+    @milestone.year = @milestone.week/52
     respond_to do |format|
 
       if @milestone.save
@@ -52,6 +65,7 @@ class MilestonesController < ApplicationController
   def update
     respond_to do |format|
       if @milestone.update(milestone_params)
+        @milestone.year = @milestone.week/52
         format.html { redirect_to milestone_path(@milestone.week), notice: 'Milestone was successfully updated.' }
         format.json { render :show, status: :ok, location: @milestone }
       else
