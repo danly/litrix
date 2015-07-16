@@ -6,21 +6,21 @@
 <% else %>
   <h1>No one logged in</h1>
 <% end %>
+<div class="year stuff"></div>
 
 <h2 class='result'>Nothing yet</h2>
-
 <% unless current_user == nil %>
   <div class="matrixContainer">
   <!-- this gives me full age -->
     <% (@user.age).times do |year| %>
-      <div id="year<%= year %>">
+      <div id="year<%= year %>" class="year">
         <% 52.times do |week| %>
           <div id="week<%= (week+1) + (year*52)%>" class="week lived"></div>
         <% end %>
       </div>
     <% end %>
 
-    <div id="year<%= @user.age %>">
+    <div id="year<%= @user.age %>" class="year">
       <% @leftOverWeeksLived.times do |left| %>
           <div id="week<%= (left+1) + ((@user.age)*52)%>" class="week lived"></div>
       <% end %>
@@ -30,7 +30,7 @@
     </div>
 
     <% (@user.total_life-@user.age-1).times do |year| %>
-      <div id="year<%= @user.age+1 + year %>">
+      <div id="year<%= @user.age+1 + year %>" class="year">
         <% 52.times do |week| %>
           <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week"></div>
         <% end %>

@@ -3,17 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.matrixContainer {
 
-  width: 476px;
-  margin: 0 auto;
+.matrixContainer {
+  max-width: 728px;
+  margin: 0px auto;  
   .week {
     position: relative;
     float: left;
     background-color: lightgray;
-    width: 5px;
-    height: 5px;
-    margin: 2px;
+    width: 6px;
+    height: 6px;
+    margin: 4px;
     vertical-align: top;
     transition: all 0.2s ease-in-out;
   }
@@ -22,9 +22,7 @@
   }
 
   .week:hover {
-
-    box-shadow: 0 0 5pt 3pt green;
-
+    box-shadow: 0 0 6pt 4pt limegreen;
   }
 
   .tooltip {
@@ -73,5 +71,34 @@
       transform: rotate(45deg);
     }
 
+}
+@media (max-width: 973px){
+  .matrixContainer{
+    max-width: 631px;
+    .week{
+      width: 6px;
+      height: 6px;
+      margin: 3px;
+    }
+    .week:hover {
+      box-shadow: 0 0 6pt 4pt limegreen;
+    }
+  }
+}
+@media (max-width: 400px){
+  .matrixContainer {
+    max-width: 390px;
+    .year {
+      padding-bottom: 150px;
+      .week {
+        width: 11px;
+        height: 11px;
+        margin: 9px;
+      }
+      .week:hover {
+        box-shadow: 0 0 15pt 9pt limegreen;
+      }
+    }
+  }
 }
 
