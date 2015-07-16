@@ -16,13 +16,15 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    countriesFile = File.read('config/countries.rb')
+    @countries = JSON.parse(countriesFile)
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(current_user.id)
-
-
+    countriesFile = File.read('config/countries.rb')
+    @countries = JSON.parse(countriesFile)
   end
 
 

@@ -37,7 +37,7 @@
   </div>  
   <div class="field">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.collection_select :country, @countries, :to_s, :to_s, {:selected => "United States of America"} %>
   </div>
   <div class="field">
     <%= f.label :Password %><br>

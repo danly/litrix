@@ -1,7 +1,5 @@
 var ready = function(){
   $('.week').on('click', weekClick)
-
-
 }
 
 function isEmpty($element){
@@ -44,7 +42,7 @@ function weekClick(){
           })
         })
       } else {
-          $(that).children('.tooltip').append("No Personal Milestones")
+          $(that).children('.tooltip').append("<h3>Your Milestones</h3>").append("No Personal Milestones")
       }
     })
 
@@ -62,6 +60,13 @@ function weekClick(){
     console.log('not empty')
   }
 }
+
+
+
+
+
+
+
 
 $(function() {
   ready();
