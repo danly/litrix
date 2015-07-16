@@ -11,7 +11,7 @@ function isEmpty($element){
 function weekClick(){
   if( isEmpty( $(this) ) ) {
     that = this
-    $(this).append("<div class='tooltip'><button class='close'>X</button></div>");
+    $(this).append("<div class='tooltip'><button class='close'>X</button><a href='/milestones/new/' class='newMilestone'>Add Milestone</a></div>");
 
     // need to do a get to add data
     weekId = this.id.slice(4,this.id.length)
@@ -23,11 +23,12 @@ function weekClick(){
     //If success
     promise.done(function( data ){
       if(data.length !== 0) {
+        $tooltip = $(that).children('.tooltip')
+        $tooltip.append("<h3>Your Milestones</h3>")
+
         data.forEach(function(milestone, i) {
           //append each milestone for that week
-          $tooltip = $(that).children('.tooltip')
           $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
-
 
           $lineItem = $tooltip.children('.lineItem')
           $lineItem.hover(function(event){

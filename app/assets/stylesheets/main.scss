@@ -21,9 +21,9 @@
     background-color: limegreen;
   }
 
-  // .week:hover {
-  //   transform: scale(2);
-  // }
+  .week:hover {
+    // transform: scale(2);
+  }
 
   .tooltip {
       position: absolute;
@@ -38,9 +38,17 @@
 
       button.close {
         position: absolute;
-        right: 0px;
+        right: 3px;
+        top: 3px;
         margin: 2px;
         outline: none;
+        z-index: 9001;
+      }
+      .newMilestone{
+        position: absolute;
+        right: 3px;
+        bottom: 3px;
+        z-index: 9001;
       }
 
       .toolNote{

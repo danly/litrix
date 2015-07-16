@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @lifedatum.country %>
+</p>
+
+<p>
+  <strong>Gho:</strong>
+  <%= @lifedatum.gho %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @lifedatum.gender %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @lifedatum.age %>
+</p>
+
+<%= link_to 'Edit', edit_lifedatum_path(@lifedatum) %> |
+<%= link_to 'Back', lifedata_path %>

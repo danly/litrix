@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lifedata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Gho</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lifedata.each do |lifedatum| %>
+      <tr>
+        <td><%= lifedatum.country %></td>
+        <td><%= lifedatum.gho %></td>
+        <td><%= lifedatum.gender %></td>
+        <td><%= lifedatum.age %></td>
+        <td><%= link_to 'Show', lifedatum %></td>
+        <td><%= link_to 'Edit', edit_lifedatum_path(lifedatum) %></td>
+        <td><%= link_to 'Destroy', lifedatum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lifedatum', new_lifedatum_path %>
