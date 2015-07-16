@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include SessionsHelper
   include MilestonesHelper
+  include MainHelper
 end

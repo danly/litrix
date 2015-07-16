@@ -8,8 +8,7 @@ class MainController < ApplicationController
       @user.save
     @leftOverWeeksLived = @user.current_weeks - (@user.age*52)
     @notLivedWeeks = @user.total_weeks - @user.current_weeks
+    @arrayMilestones = uniqWeeks(current_user.milestones.all)
     end
-
-
   end
 end

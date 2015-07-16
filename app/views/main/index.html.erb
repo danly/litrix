@@ -6,7 +6,7 @@
 <% else %>
   <h1>No one logged in</h1>
 <% end %>
-<div class="year stuff"></div>
+<div><%= @arrayMilestones %></div>
 
 <h2 class='result'>Nothing yet</h2>
 <% unless current_user == nil %>
@@ -14,28 +14,56 @@
   <!-- this gives me full age -->
     <% (@user.age).times do |year| %>
       <div id="year<%= year %>" class="year">
+
         <% 52.times do |week| %>
-          <div id="week<%= (week+1) + (year*52)%>" class="week lived"></div>
+
+          <% id = (week+1) + (year*52)%>
+          <% if @arrayMilestones.length != 0 %>
+
+            <% @arrayMilestones.length.times do |milestoneId| %>
+
+              <% if @arrayMilestones[milestoneId] == id %>
+                <div id="week<%= id %>" class="week lived personal"></div>
+              <% else %>
+                <div id="week<%= id %>" class="week lived"></div>
+              <% end %>
+
+            <% end %>
+
+          <% else %>
+            <div id="week<%= id %>" class="week lived"></div>
+          <% end %>
+          
         <% end %>
+
       </div>
     <% end %>
 
     <div id="year<%= @user.age %>" class="year">
+
       <% @leftOverWeeksLived.times do |left| %>
-          <div id="week<%= (left+1) + ((@user.age)*52)%>" class="week lived"></div>
+          <% id = (left+1) + ((@user.age)*52)%>      
+          <div id="week<%= id %>" class="week lived"></div>
       <% end %>
+
       <% (52-@leftOverWeeksLived).times do |left| %>
-          <div id="week<%= (left+1+@leftOverWeeksLived) + ((@user.age)*52)%>" class="week"></div>
+          <% id = (left+1+@leftOverWeeksLived) + ((@user.age)*52) %>
+          <div id="week<%= id %>" class="week"></div>
       <% end %>
+
     </div>
 
     <% (@user.total_life-@user.age-1).times do |year| %>
       <div id="year<%= @user.age+1 + year %>" class="year">
+
         <% 52.times do |week| %>
-          <div id="week<%= (week+1) + (year*52) + ((@user.age+1)*52)%>" class="week"></div>
+          <% id = (week+1) + (year*52) + ((@user.age+1)*52) %>
+          <div id="week<%= id %>" class="week"></div>
         <% end %>
+
       </div>
     <% end %>
+
   </div>
 <% end %>
 
