@@ -1,5 +1,6 @@
 var ready = function(){
   $('.week').on('click', weekClick)
+
 }
 
 function isEmpty($element){
