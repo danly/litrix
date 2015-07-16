@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(current_user.id)
+
+
   end
 
 
@@ -31,7 +33,15 @@ class UsersController < ApplicationController
     @user.age = current_age(@user.birthdate)
     @user.current_weeks = current_weeks(@user.birthdate)
 
+
+    @lifedatum = Lifedatum.find_by_country_and_gender(:country => @user.country, :gender => @user.gender )
     #hardcoded for now
+    # country, sex
+    @user.gender
+    @user.country
+
+
+
     @user.total_life = 100
     @user.total_weeks = @user.total_life*52
 
