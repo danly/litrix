@@ -22,9 +22,9 @@ jobs.title_params.create(:itemTitle => 'Unveils iPod', :note => "First iPod", :d
 jobs.title_params.create(:itemTitle => "'Stay hungry, stay foolish'", :note => "Stanford commencement speech", :date => Date.parse('12-06-2005'), :age => 50)
 jobs.title_params.create(:itemTitle => "Disney acquires Pixar", :note => "$7.4 billion. Jobs joins the Disney board", :date => Date.parse('24-01-2006'), :age => 51)
 jobs.title_params.create(:itemTitle => "iPhone", :note => "Released in US", :date => Date.parse('29-06-2007'), :age => 52)
-jobs.title_params.create(:itemTitle => "'Spaceship'", :note => "Unveil plans for the new campus" :date => Date.parse('06-06-2011'), :age => 56)
-jobs.title_params.create(:itemTitle => "Resigns from Apple", :note => "Unveil plans for the new campus" :date => Date.parse('24-08-2011'), :age => 56)
-jobs.title_params.create(:itemTitle => "Death", :note => "Dies at home, surrounded by family" :date => Date.parse('05-10-2011'), :age => 56)
+jobs.title_params.create(:itemTitle => "'Spaceship'", :note => "Unveil plans for the new campus", :date => Date.parse('06-06-2011'), :age => 56)
+jobs.title_params.create(:itemTitle => "Resigns from Apple", :note => "Tim Cook becomes new CEO", :date => Date.parse('24-08-2011'), :age => 56)
+jobs.title_params.create(:itemTitle => "Death", :note => "Dies at home, surrounded by family", :date => Date.parse('05-10-2011'), :age => 56)
 
 
 
