@@ -42,7 +42,7 @@ function getDatasets(){
       title = data[i].title
       $(that).append("<div class='datasetItem'>"+title+"<div>")
     };
-      $(that).append("<div class='datasetItem'><button class='createDataButton'><a href='/datasets/new'>Create</a></button></div>")
+      // $(that).append("<div class='datasetItem'><button class='createDataButton'><a href='/datasets/new'>Create</a></button></div>")
 
     $('.datasetItem').on('click', getDataContent)
   })
