@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Date.parse(21-01-1990)
 
 file = File.read('config/lifedata.json')
 data_hash = JSON.parse(file)

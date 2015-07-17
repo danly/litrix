@@ -3,22 +3,24 @@ var ready = function(){
   $('.datasetsKey').one('click', getDatasets)
 }
 
+
+
 function getDataContent(){
   that = this
   var setName = $(this).text()
   $('div .dataItem').removeClass('dataItem').attr('data-set', '')
-
-
-
   var promise = $.getJSON("/set/"+setName)
   promise.done(function(data) {
     for (var i = 0; i < data.length; i++) {
       var item = data[i]
-      week = getWeekFromDay(item.date)
-      $('#week' + week).addClass("dataItem").attr('data-set', setName)
+      var weekOfYear = getWeekFromDay(item.date)
+      var specificWeek = item.age*52 + weekOfYear
+      $('#week' + specificWeek).addClass("dataItem").attr('data-set', setName)
     };
   })
 }
+
+
 
 function getWeekFromDay(day){
     var now = new Date(day);
@@ -29,6 +31,8 @@ function getWeekFromDay(day){
     var week = Math.floor(day/7);
     return week;
 }
+
+
 
 function getDatasets(){
   that = this
@@ -43,14 +47,14 @@ function getDatasets(){
   promise.fail(function(){
     console.log('failure to get data from datasets')
   })
-
-
 }
+
 
 
 function isEmpty($element){
   return($element.html() ==='')
 }
+
 
 function weekClick(){
   if( isEmpty( $(this) ) ) {
@@ -67,14 +71,6 @@ function weekClick(){
     if(!!dataset) {
       getDatasetMilestones(weekId, dataset)
     }
-
-
-
-
-
-
-
-
     $('.close').click(function(event){
       event.stopPropagation();
       $week = $(this).parent().parent()
@@ -96,7 +92,8 @@ function getDatasetMilestones(weekId, dataset){
 
       data.forEach(function (item, i) {
         var dataWeek = getWeekFromDay(item.date)
-        if(parseInt(weekId) === dataWeek){
+        var specificWeek = item.age*52 + dataWeek
+        if(parseInt(weekId) === specificWeek){
           $tooltip.append("<p class='lineItem'>"+item.itemTitle+"<span class='toolNote'>"+item.note+"</span></p>")
 
           $lineItem = $tooltip.children('.lineItem')
@@ -122,6 +119,7 @@ function getDatasetMilestones(weekId, dataset){
     $(that).children('.tooltip').append("<h3>Other Milestones</h3>").append("None")
   })
 }
+
 
 
 function getPersonalMilestones(weekId){

@@ -25,7 +25,8 @@ class DatasetsController < ApplicationController
           itemTitle = contents[:itemTitle][index]
           note  = contents[:note][index]
           date  = contents[:date][index]
-          @dataset.title_params.create(:itemTitle => itemTitle, :note => note, :date => date)
+          age = contents[:age][index]
+          @dataset.title_params.create(:itemTitle => itemTitle, :note => note, :date => date, :age => age)
         end
         format.html { redirect_to dataset_path(@dataset), notice: 'Dataset was successfully created.' }
         format.json { render :show, status: :created, location: @dataset }
