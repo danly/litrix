@@ -13,6 +13,27 @@
     font-size: 15px;
     margin: 45px;
   }
+  .createDataButton {
+    color: white;
+    bottom: 0px;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    outline: none;
+    font-size: 15px;
+    border: none;
+    background-color: #4798CD;
+    a{
+      color: white;
+      text-decoration: none;
+    }
+    a:hover{
+      background-color: rgba(0,0,0,0);
+    }
+  }
+  .createDataButton:active {
+    background-color: #005C99;
+  }
 }
 
 .matrixContainer {
