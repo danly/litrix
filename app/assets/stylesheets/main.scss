@@ -39,6 +39,7 @@
 .matrixContainer {
   max-width: 728px;
   margin: 0px auto;
+  margin-top: 125px;
   .percent {
     color: lightgray;
   }
@@ -131,6 +132,7 @@
     }
   }
   .matrixContainer{
+    margin-top: 0px;
     max-width: 631px;
     .week{
       width: 6px;

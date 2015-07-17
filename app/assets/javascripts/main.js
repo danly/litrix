@@ -62,7 +62,8 @@ function weekClick(){
   if( isEmpty( $(this) ) ) {
     that = this
     var idOfWeek = this.id.slice(4, this.id.length)
-    $(this).append("<div class='tooltip'><button class='close'>X</button><a href='/milestones/new/"+idOfWeek+"' class='newMilestone'>Add Milestone</a></div>");
+    var thisAge = Math.floor(idOfWeek/52)
+    $(this).append("<div class='tooltip'><h3 class='dotInfo'>Week: "+idOfWeek+"   Age: "+thisAge+"</h3><button class='close'>X</button><a href='/milestones/new/"+idOfWeek+"' class='newMilestone'>Add Milestone</a></div>");
 
     // need to do a get to add data
     weekId = this.id.slice(4,this.id.length)
