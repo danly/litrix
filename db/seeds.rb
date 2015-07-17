@@ -6,6 +6,49 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+jobs = Dataset.create(:title => "Steve Jobs")
+jobs.title_params.create(:itemTitle => 'Birth', :note => "The man was born and adopted", :date => Date.parse('24-02-1955'), :age => 0)
+jobs.title_params.create(:itemTitle => 'Met Woz', :note => "The Woz", :date => Date.parse('10-08-1969'), :age => 14)
+jobs.title_params.create(:itemTitle => 'Atari', :note => "First job", :date => Date.parse('10-07-1974'), :age => 19)
+jobs.title_params.create(:itemTitle => 'Apple I', :note => "Shows at Homebrew Computer Club with Woz", :date => Date.parse('25-03-1976'), :age => 21)
+jobs.title_params.create(:itemTitle => 'Apple Computer Inc.', :note => "Founded with Woz and Wayne", :date => Date.parse('01-04-1976'), :age => 21)
+jobs.title_params.create(:itemTitle => 'Resigned from Apple', :note => "Starts NeXT", :date => Date.parse('17-08-1985'), :age => 30)
+jobs.title_params.create(:itemTitle => 'Pixar', :note => "Buy's Lucas' computer division for $10 million and incorpates it as Pixar", :date => Date.parse('30-01-1986'), :age => 31)
+jobs.title_params.create(:itemTitle => 'Marriage', :note => "Marries Laurene Powell in Yosemite under the blessing of Steve's old zen guru Kobin Chino", :date => Date.parse('18-01-1991'), :age => 36)
+jobs.title_params.create(:itemTitle => 'Informal Advisor', :note => "Apple buys NeXT for $400 million", :date => Date.parse('11-12-1996'), :age => 41)
+jobs.title_params.create(:itemTitle => 'CEO of Apple', :note => "Interim CEO", :date => Date.parse('11-07-1997'), :age => 42)
+jobs.title_params.create(:itemTitle => 'Official CEO', :note => "Drops the interim title", :date => Date.parse('05-01-2000'), :age => 45)
+jobs.title_params.create(:itemTitle => 'Unveils iPod', :note => "First iPod", :date => Date.parse('23-10-2001'), :age => 46)
+jobs.title_params.create(:itemTitle => "'Stay hungry, stay foolish'", :note => "Stanford commencement speech", :date => Date.parse('12-06-2005'), :age => 50)
+jobs.title_params.create(:itemTitle => "Disney acquires Pixar", :note => "$7.4 billion. Jobs joins the Disney board", :date => Date.parse('24-01-2006'), :age => 51)
+jobs.title_params.create(:itemTitle => "iPhone", :note => "Released in US", :date => Date.parse('29-06-2007'), :age => 52)
+jobs.title_params.create(:itemTitle => "'Spaceship'", :note => "Unveil plans for the new campus" :date => Date.parse('06-06-2011'), :age => 56)
+jobs.title_params.create(:itemTitle => "Resigns from Apple", :note => "Unveil plans for the new campus" :date => Date.parse('24-08-2011'), :age => 56)
+jobs.title_params.create(:itemTitle => "Death", :note => "Dies at home, surrounded by family" :date => Date.parse('05-10-2011'), :age => 56)
+
+
+
+comp = Dataset.create(:title => 'Composers')
+comp.title_params.create(:itemTitle => 'Mozart', :note => "Composed his first symphony at age 8", :date => Date.parse('17-07-1764'), :age => 8)
+comp.title_params.create(:itemTitle => 'Beethoveen', :note => "Composed Fur Elise supposedly around this age", :date => Date.parse('27-04-1810'), :age => 45)
+comp.title_params.create(:itemTitle => 'Beethoveen', :note => "Composed Sonata No. 14 Moonlight", :date => Date.parse('27-10-1801'), :age => 30)
+comp.title_params.create(:itemTitle => 'Camille Saint-Saens', :note => "Composed Introduction and Rondo Capriccioso", :date => Date.parse('02-03-1863'), :age => 28)
+comp.title_params.create(:itemTitle => 'Beethoveen', :note => "Composed Violin Sonata No. 9 'Kreutzer'", :date => Date.parse('24-04-1803'), :age => 33)
+comp.title_params.create(:itemTitle => 'Chopin', :note => "Composed Ballade No. 1 in G minor", :date => Date.parse('24-04-1831'), :age => 21)
+
+
+life = Dataset.create(:title => 'Life')
+life.title_params.create(:itemTitle => 'First Marriage', :note => "29 is America's average age to get married", :date => Date.parse('17-07-2015'), :age => 29)
+life.title_params.create(:itemTitle => 'First Child', :note => "Average in the U.S. is 25", :date => Date.parse('17-02-2014'), :age => 25)
+life.title_params.create(:itemTitle => 'First Child', :note => "Average in the U.S. is 25", :date => Date.parse('17-02-2014'), :age => 25)
+life.title_params.create(:itemTitle => 'Graduate High School', :note => "Got that first diploma!", :date => Date.parse('15-06-2014'), :age => 18)
+life.title_params.create(:itemTitle => 'Graduate College', :note => "Average age is 24", :date => Date.parse('15-06-2010'), :age => 24)
+life.title_params.create(:itemTitle => 'Graduate College', :note => "Average age is 24", :date => Date.parse('15-06-2010'), :age => 24)
+life.title_params.create(:itemTitle => 'Enter K-12', :note => "Around 5 years old here", :date => Date.parse('28-08-2000'), :age => 5)
+life.title_params.create(:itemTitle => 'First-time Grandparent', :note => "Average 47 when you have a grandchild", :date => Date.parse('12-12-2012'), :age => 47)
+
+
+
 pres = Dataset.create(:title => 'Presidents')
 pres.title_params.create(:itemTitle => 'George Washington', :note => "Became America's 1st President", :date => Date.parse('30-04-1789'), :age => 57)
 pres.title_params.create(:itemTitle => 'John Adams', :note => "2nd President", :date => Date.parse('04-03-1797'), :age => 61)
@@ -51,8 +94,6 @@ pres.title_params.create(:itemTitle => 'George H. W. Bush', :note => "41th Presi
 pres.title_params.create(:itemTitle => 'Bill Clinton', :note => "42th President, candidate for 'First Gentleman'", :date => Date.parse('January 20, 1993'), :age =>46)
 pres.title_params.create(:itemTitle => 'George W. Bush', :note => "43th President", :date => Date.parse('January 20, 2001'), :age =>54)
 pres.title_params.create(:itemTitle => 'Barack Obama', :note => "44th President, first black president", :date => Date.parse('January 20, 2009'), :age =>47)
-
-
 
 
 
