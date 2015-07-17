@@ -14,6 +14,43 @@
  *= require_tree .
  *= require_self
  */
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans', sans-serif; 
 
+}
 
+.navbar {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100px;
+  width: 50%;
 
+  .userNav {
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    font-size: 17px;
+    .navLink {
+      display: inline;
+    }
+  }
+}
+
+.sidebar {
+  margin-left: 15px;
+  .logo{
+    font-size: 50px;
+  }
+  a{
+    width: 100%;
+    text-decoration: none;
+  }
+  a:hover{
+    color: inherit;
+    background-color: white;
+  }
+
+}

@@ -1,16 +1,10 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
-
-<% if current_user %>
-  <h1><%= @user.username %> is logged in </h1>
-<% else %>
-  <h1>No one logged in</h1>
-<% end %>
-<div><%= @arrayMilestones %></div>
-
-<h2 class='result'>Nothing yet</h2>
+<div class="datasetsKey">
+  <h2> &#9660; Datasets</h2>
+</div>
 <% unless current_user == nil %>
   <div class="matrixContainer">
+    <h2 class='matrixTitle'>Your Life</h2>
+    <h3 class='percent'><%= @percent %>% lived</h3>
   <!-- this gives me full age -->
     <% (@user.age).times do |year| %>
       <div id="year<%= year %>" class="year">
@@ -138,9 +132,7 @@
 <% end %>
 
 <!-- might have issues with older than average death age -->
-<div class="datasetsKey">
-  <h3>Datasets</h3>
-</div>
+
 
 
 

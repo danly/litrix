@@ -1,34 +1,36 @@
-<h1>Add a milestone</h1>
-<h2>for the <%= @ordinalWeek %> week of your life you are <%= @yearText %></h2>
+<div class='milestoneForm'>
+  <h2>Add a milestone</h2>
+  <h3>for the <%= @ordinalWeek %> week of your life you are <%= @yearText %></h3>
 
-<%= form_for(@milestone) do |f| %>
-  <% if @milestone.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
+  <%= form_for(@milestone) do |f| %>
+    <% if @milestone.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
 
-      <ul>
-      <% @milestone.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @milestone.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :note %><br>
+      <%= f.text_area :note %>
+    </div>
+      <%= f.hidden_field :week, :value => @specificWeek %>
+      <%= f.hidden_field :year, :value => @specificAge %>
+
+    <div class="actions">
+    <%= f.submit "Add" %><%= button_to "Back", root_path, :class => "button", :method => :get  %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :note %><br>
-    <%= f.text_area :note %>
-  </div>
-    <%= f.hidden_field :week, :value => @specificWeek %>
-    <%= f.hidden_field :year, :value => @specificAge %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
 
-<%= link_to 'Back', milestones_path %>
+</div>

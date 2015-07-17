@@ -40,7 +40,7 @@ function getDatasets(){
   promise.done(function(data){
     for (var i = 0; i < data.length; i++) {
       title = data[i].title
-      $(that).append("<h3 class='datasetItem'>"+title+"<h3>")
+      $(that).append("<div class='datasetItem'>"+title+"<div>")
     };
     $('.datasetItem').on('click', getDataContent)
   })
@@ -94,7 +94,7 @@ function getDatasetMilestones(weekId, dataset){
         var dataWeek = getWeekFromDay(item.date)
         var specificWeek = item.age*52 + dataWeek
         if(parseInt(weekId) === specificWeek){
-          $tooltip.append("<p class='lineItem'>"+item.itemTitle+"<span class='toolNote'>"+item.note+"</span></p>")
+          $tooltip.append("<p class='lineItem'>"+item.itemTitle+"<br><span class='toolNote'>"+item.note+"</span></p>")
 
           $lineItem = $tooltip.children('.lineItem')
           $lineItem.hover(function(event){
@@ -134,7 +134,7 @@ function getPersonalMilestones(weekId){
 
       data.forEach(function (milestone, i) {
         //append each milestone for that week
-        $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
+        $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><br><span class='toolNote'>"+milestone.note+"</span></p>")
 
         $lineItem = $tooltip.children('.lineItem')
         $lineItem.hover(function(event){
