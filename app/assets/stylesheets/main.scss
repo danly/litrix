@@ -78,6 +78,7 @@
       min-height: 160px;
       bottom: 27px;
       right: -124px;
+      z-index: 10;
 
       button.close {
         position: absolute;
@@ -116,6 +117,7 @@
       bottom: -15px;
       right: 111px;
       transform: rotate(45deg);
+      z-index: -1;
     }
 
 }
