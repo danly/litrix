@@ -1,0 +1,44 @@
+<%= form_for(@dataset) do |f| %>
+  <% if @dataset.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dataset.errors.count, "error") %> prohibited this dataset from being saved:</h2>
+
+      <ul>
+      <% @dataset.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="contentForm">
+    <%= fields_for :title_param do |u| %>
+      <div class="field">
+        <%= u.label "Item" %><br>
+        <input type='text' name='title_param[itemTitle][]' id='title_param_itemTitle'>
+      </div>
+      <div class="field">
+        <%= u.label :note %><br>
+        <textarea name='title_param[note][]' id='title_param_note'></textarea>
+      </div>
+      <div class="field">
+        <%= u.label :date %><br>
+        <input type='date' name='title_param[date][]' id='title_param_date'>
+      </div>
+    <% end %>
+      <div class='contentSubmit'><%= f.submit %></div>
+  </div>
+<% end %>
+
+<button class="addItem">Add Item</button>
+<script>
+  $('.addItem').click(function(){
+    $('.contentSubmit').before("<div class='field'><label for='title_param_itemTitle'>Item</label><br><input type='text' name='title_param[itemTitle][]' id='title_param_itemTitle'></div><div class='field'><label for='title_param_note'>Note</label><br><textarea name='title_param[note][]' id='title_param_note'></textarea></div><div class='field'><label for='title_param_date'>Date</label><br><input type='date' name='title_param[date][]' id='title_param_date'></div>")
+  })
+</script>
+

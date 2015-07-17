@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   root to: 'main#index'
+
+  get 'datasets', to: 'datasets#index', as: 'datasets'
+  get 'datasets/new', to: 'datasets#new', as: 'new_dataset'
+  post 'datasets', to: 'datasets#create'
+  get 'datasets/:id', to: 'datasets#show', as: 'dataset'
+  get 'datasets/:id/edit', to: 'datasets#edit', as: 'edit_dataset' 
+  patch 'datasets/:id', to: 'datasets#update'
+  put 'datasets/:id', to: 'datasets#update'
+  delete 'datasets/:id', to: 'datasets#destroy'
+
   resources :lifedata
 
   resources :users
@@ -10,6 +20,7 @@ Rails.application.routes.draw do
   get    'milestones/new/:week', to: 'milestones#new_milestone_by_week', as: 'new_milestone_by_week'
   get    'milestones/:id/edit', to: 'milestones#edit',      as: 'edit_milestone'
   get    'milestones/:id',      to: 'milestones#show',      as: 'milestone'
+  patch  'milestones/:id',      to: 'milestones#update'
   put    'milestones/:id',      to: 'milestones#update'
   delete 'milestones/:id',      to: 'milestones#destroy'
 
