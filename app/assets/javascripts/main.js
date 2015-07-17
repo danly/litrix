@@ -1,7 +1,30 @@
 var ready = function(){
   $('.week').on('click', weekClick)
+  $('.datasetsKey').one('click', getDatasets)
+  $('.datasetItem').on('click', getDataContent)
+}
+
+function getDataContent(){
+  that = this
 
 }
+
+function getDatasets(){
+  that = this
+  var promise = $.getJSON("/datasets", function (data){})
+  promise.done(function( data ){
+    for (var i = 0; i < data.length; i++) {
+      title = data[i].title
+      $(that).append("<h3 class='datasetItem'>"+title+"<h3>")
+    };
+  })
+  promise.fail(function(){
+    console.log('failure to get data from datasets')
+  })
+
+
+}
+
 
 function isEmpty($element){
   return($element.html() ==='')
