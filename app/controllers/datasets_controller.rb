@@ -11,9 +11,17 @@ class DatasetsController < ApplicationController
 
   def create
     @dataset = current_user.datasets.new(dataset_params)
-    respond_to do |format|
+    contents = params[:title_param]
+
+    respond_to do |format|  
 
       if @dataset.save
+        contents[:note].length.times do |index|
+          itemTitle = contents[:itemTitle][index]
+          note  = contents[:note][index]
+          date  = contents[:date][index]
+          @dataset.title_params.create(:itemTitle => itemTitle, :note => note, :date => date)
+        end
         format.html { redirect_to dataset_path(@dataset), notice: 'Dataset was successfully created.' }
         format.json { render :show, status: :created, location: @dataset }
       else
@@ -60,6 +68,5 @@ class DatasetsController < ApplicationController
     def dataset_params
       params.require(:dataset).permit(:title)
     end
-
 
 end

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get    'milestones/new/:week', to: 'milestones#new_milestone_by_week', as: 'new_milestone_by_week'
   get    'milestones/:id/edit', to: 'milestones#edit',      as: 'edit_milestone'
   get    'milestones/:id',      to: 'milestones#show',      as: 'milestone'
+  patch  'milestones/:id',      to: 'milestones#update'
   put    'milestones/:id',      to: 'milestones#update'
   delete 'milestones/:id',      to: 'milestones#destroy'
 
