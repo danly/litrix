@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   put 'datasets/:id', to: 'datasets#update'
   delete 'datasets/:id', to: 'datasets#destroy'
 
+  get 'set/:title', to: 'datasets#show_set', as: 'dataset_content'
+
   resources :lifedata
 
   resources :users

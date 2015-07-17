@@ -1,22 +1,44 @@
 var ready = function(){
   $('.week').on('click', weekClick)
   $('.datasetsKey').one('click', getDatasets)
-  $('.datasetItem').on('click', getDataContent)
 }
 
 function getDataContent(){
   that = this
+  var setName = $(this).text()
+  $('div .dataItem').removeClass('dataItem').attr('data-set', '')
 
+
+
+  var promise = $.getJSON("/set/"+setName)
+  promise.done(function(data) {
+    for (var i = 0; i < data.length; i++) {
+      var item = data[i]
+      week = getWeekFromDay(item.date)
+      $('#week' + week).addClass("dataItem").attr('data-set', setName)
+    };
+  })
+}
+
+function getWeekFromDay(day){
+    var now = new Date(day);
+    var start = new Date(now.getFullYear(), 0, 0);
+    var diff = now - start;
+    var oneDay = 1000 * 60 * 60 * 24;
+    var day = Math.floor(diff / oneDay);
+    var week = Math.floor(day/7);
+    return week;
 }
 
 function getDatasets(){
   that = this
-  var promise = $.getJSON("/datasets", function (data){})
-  promise.done(function( data ){
+  var promise = $.getJSON("/datasets")
+  promise.done(function(data){
     for (var i = 0; i < data.length; i++) {
       title = data[i].title
       $(that).append("<h3 class='datasetItem'>"+title+"<h3>")
     };
+    $('.datasetItem').on('click', getDataContent)
   })
   promise.fail(function(){
     console.log('failure to get data from datasets')
@@ -38,20 +60,44 @@ function weekClick(){
 
     // need to do a get to add data
     weekId = this.id.slice(4,this.id.length)
+    dataset = $(this).attr('data-set')
     console.log(weekId)
 
-    var promise = $.getJSON("/weeks/"+weekId, function (data){
-      console.log(data)
-    })
-    //If success
-    promise.done(function( data ){
-      if(data.length !== 0) {
-        $tooltip = $(that).children('.tooltip')
-        $tooltip.append("<h3>Your Milestones</h3>")
+    getPersonalMilestones(weekId)
+    if(!!dataset) {
+      getDatasetMilestones(weekId, dataset)
+    }
 
-        data.forEach(function(milestone, i) {
-          //append each milestone for that week
-          $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
+
+
+
+
+
+
+
+    $('.close').click(function(event){
+      event.stopPropagation();
+      $week = $(this).parent().parent()
+      $week.empty();
+    })
+  } else {
+    console.log('not empty')
+  }
+}
+
+
+function getDatasetMilestones(weekId, dataset){
+  var promise = $.getJSON("/set/"+dataset)
+
+  promise.done(function (data) {
+    if(data.length !== 0) {
+      $tooltip = $(that).children('.tooltip')
+      $tooltip.append("<h3>Other Milestones</h3>")
+
+      data.forEach(function (item, i) {
+        var dataWeek = getWeekFromDay(item.date)
+        if(parseInt(weekId) === dataWeek){
+          $tooltip.append("<p class='lineItem'>"+item.itemTitle+"<span class='toolNote'>"+item.note+"</span></p>")
 
           $lineItem = $tooltip.children('.lineItem')
           $lineItem.hover(function(event){
@@ -65,27 +111,55 @@ function weekClick(){
             $toolNote = $(this).children('.toolNote')
             $toolNote.fadeOut()
           })
-        })
-      } else {
-          $(that).children('.tooltip').append("<h3>Your Milestones</h3>").append("No Personal Milestones")
-      }
-    })
+        }
+      })
+    } else {
+      $(that).children('.tooltip').append("<h3>Other Milestones</h3>").append("None")
+    }
+  })
 
-    //If no data failure
-    promise.fail(function(){
-      $(that).children('.tooltip').append("No Personal Milestones")
-    })
-
-    $('.close').click(function(event){
-      event.stopPropagation();
-      $week = $(this).parent().parent()
-      $week.empty();
-    })
-  } else {
-    console.log('not empty')
-  }
+  promise.fail(function(){
+    $(that).children('.tooltip').append("<h3>Other Milestones</h3>").append("None")
+  })
 }
 
+
+function getPersonalMilestones(weekId){
+  var promise = $.getJSON("/weeks/"+weekId, function (data){
+    console.log(data)
+  })
+  //If success
+  promise.done(function( data ){
+    if(data.length !== 0) {
+      $tooltip = $(that).children('.tooltip')
+      $tooltip.append("<h3>Your Milestones</h3>")
+
+      data.forEach(function (milestone, i) {
+        //append each milestone for that week
+        $tooltip.append("<p class='lineItem'><a href='/milestones/"+milestone.id+"' data-milestone-id='"+milestone.id+"'>"+milestone.title+"</a><span class='toolNote'>"+milestone.note+"</span></p>")
+
+        $lineItem = $tooltip.children('.lineItem')
+        $lineItem.hover(function(event){
+          //mouseenter
+          event.stopPropagation();
+          $toolNote = $(this).children('.toolNote')
+          $toolNote.fadeIn()
+        }, function(event){
+          //mouseleave
+          event.stopPropagation();
+          $toolNote = $(this).children('.toolNote')
+          $toolNote.fadeOut()
+        })
+      })
+    } else {
+        $(that).children('.tooltip').append("<h3>Your Milestones</h3>").append("No Personal Milestones")
+    }
+  })
+  //If no data failure
+  promise.fail(function(){
+    $(that).children('.tooltip').append("No Personal Milestones")
+  })
+}
 
 
 

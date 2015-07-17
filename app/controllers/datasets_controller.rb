@@ -1,6 +1,11 @@
 class DatasetsController < ApplicationController
   before_action :set_dataset, only: [:show, :edit, :update, :destroy]
 
+  def show_set
+    @dataset = Dataset.find_by(:title => params[:title])
+    @title_params = @dataset.title_params.all
+  end
+
   def index
     @datasets = Dataset.all
   end

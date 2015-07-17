@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Items of <%= @dataset.title %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>itemTitle</th>
+      <th>Note</th>
+      <th>Date</th>
+      <th>Dataset ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @title_params.each do |item| %>
+      <tr>
+        <td><%= item.itemTitle %></td>
+        <td><%= item.note %></td>
+        <td><%= item.date %></td>
+        <td><%= item.dataset_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
