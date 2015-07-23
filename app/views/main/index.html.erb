@@ -129,6 +129,20 @@
     <% end %>
 
   </div>
+
+<% else %>  
+  <div class='landing'>
+    <img src="<%= asset_path 'landing.png' %>">
+
+    <div class='create'>
+      <input type="button" onclick="location.href='<%= new_user_path %>';" value="Create an Account" />
+      to see how long you have left to live.
+    </div>
+  </div>
+
+
+
+
 <% end %>
 
 <!-- might have issues with older than average death age -->

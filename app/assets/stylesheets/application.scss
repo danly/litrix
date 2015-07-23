@@ -54,3 +54,20 @@ html, body {
   }
 
 }
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  height: 65px;
+  font-size: 18px; 
+  color: gray;
+  background-color: white;
+
+  div{
+    padding: 20px;
+  }
+
+}
+
