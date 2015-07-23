@@ -153,6 +153,9 @@
       height: 25px;
       bottom: -15px;
       right: 111px;
+      -moz-transform: rotate(45deg); 
+      -o-transform: rotate(45deg); 
+      -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
       z-index: -1;
     }
