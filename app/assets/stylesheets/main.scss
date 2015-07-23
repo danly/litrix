@@ -83,6 +83,27 @@
       bottom: 27px;
       right: -124px;
       z-index: 10;
+      background-color: slategrey;
+      color: white;
+      padding-left: 10px;
+      padding-bottom: 10px;
+
+      .dotInfo{
+        position: relative;
+        text-align: center;
+        width: 80%;
+        margin: 10px;
+        left: 10px;
+        font-size: 17px;
+      }
+
+      .yourMile{
+        color: coral;
+      }
+
+      .dataMile{
+        color: bisque;
+      }
 
       button.close {
         position: absolute;
@@ -101,6 +122,7 @@
         position: absolute;
         right: 3px;
         bottom: 3px;
+        color: lightcoral;
       }
 
       .toolNote{
@@ -112,7 +134,7 @@
     .tooltip::after {
       content: ' ';
       position: absolute;
-      background-color: white;
+      background-color: inherit;
       border: 2px solid gray;
       border-top: none;
       border-left: none;

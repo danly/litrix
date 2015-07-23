@@ -91,7 +91,7 @@ function getDatasetMilestones(weekId, dataset){
   promise.done(function (data) {
     if(data.length !== 0) {
       $tooltip = $(that).children('.tooltip')
-      $tooltip.append("<h3>Other Milestones</h3>")
+      $tooltip.append("<h3 class='dataMile'>"+dataset+"</h3>")
 
       data.forEach(function (item, i) {
         var dataWeek = getWeekFromDay(item.date)
@@ -133,7 +133,7 @@ function getPersonalMilestones(weekId){
   promise.done(function( data ){
     if(data.length !== 0) {
       $tooltip = $(that).children('.tooltip')
-      $tooltip.append("<h3>Your Milestones</h3>")
+      $tooltip.append("<h3 class='yourMile'>Your Milestones</h3>")
 
       data.forEach(function (milestone, i) {
         //append each milestone for that week
@@ -153,7 +153,7 @@ function getPersonalMilestones(weekId){
         })
       })
     } else {
-        $(that).children('.tooltip').append("<h3>Your Milestones</h3>").append("No Personal Milestones")
+        $(that).children('.tooltip').append("<h3 class='yourMile'>Your Milestones</h3>").append("No Personal Milestones")
     }
   })
   //If no data failure
