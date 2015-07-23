@@ -51,7 +51,7 @@ class MilestonesController < ApplicationController
     respond_to do |format|
 
       if @milestone.save
-        format.html { redirect_to milestone_path(@milestone), notice: 'Milestone was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Milestone was successfully created.' }
         format.json { render :show, status: :created, location: @milestone }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class MilestonesController < ApplicationController
     respond_to do |format|
       if @milestone.update(milestone_params)
         @milestone.year = @milestone.week/52
-        format.html { redirect_to milestone_path(@milestone.week), notice: 'Milestone was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Milestone was successfully updated.' }
         format.json { render :show, status: :ok, location: @milestone }
       else
         format.html { render :edit }
@@ -80,7 +80,7 @@ class MilestonesController < ApplicationController
   def destroy
     @milestone.destroy
     respond_to do |format|
-      format.html { redirect_to milestones_url, notice: 'Milestone was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Milestone was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
