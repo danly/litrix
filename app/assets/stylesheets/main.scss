@@ -101,6 +101,16 @@
         color: coral;
       }
 
+      .lineItem{
+        a{
+          color: white;
+        }
+        a:hover{
+          background-color: coral;
+          opacity: 0.4;
+        }
+      }
+
       .dataMile{
         color: bisque;
       }
