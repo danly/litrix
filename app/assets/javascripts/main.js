@@ -1,6 +1,12 @@
 var ready = function(){
   $('.week').on('click', weekClick)
   $('.datasetsKey').one('click', getDatasets)
+  $(document).keyup(function(e){
+    if(e.keyCode == 27){
+      console.log('pressed', e.keyCode)
+      $('.tooltip').remove()
+    }
+  })
 }
 
 
