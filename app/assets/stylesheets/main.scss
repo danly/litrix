@@ -40,8 +40,12 @@
   max-width: 728px;
   margin: 0px auto;
   margin-top: 125px;
+  .matrixTitle{
+    margin-bottom: 0px;
+  }
   .percent {
-    color: lightgray;
+    margin-top: 7px;
+    color: gray;
   }
   .week {
     position: relative;
