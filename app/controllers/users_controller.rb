@@ -41,6 +41,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         login(@user)
+        current_user.milestones.create({:title => "Birth", :note => "You were introduced to the world", :year => 0, :week=> "1"})
+        current_user.milestones.create({:title => "Supposed Death", :note => "You are on borrowed time now", :year => current_user.total_life, :week=> current_user.total_weeks.to_s})
         format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

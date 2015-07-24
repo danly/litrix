@@ -17,6 +17,15 @@ class MainController < ApplicationController
 
   def create
     @guest = User.new(guest_params)
+    @guest.gender = "Both sexes"
+    @guest.country = "United States of America"
+    @lifedatum = Lifedatum.where(:country => @guest.country).where(:gender => @guest.gender)[0]
+    @guest.total_life = @lifedatum.age
+    @guest.total_weeks = @guest.total_life*52
+    if @guest.age > @lifedatum.age
+      @guest.age = @lifedatum.age
+    end
+
     @guest.username = "Guest"
     @guest.first_name = "Guest"
     @guest.last_name = "Guest"
@@ -24,15 +33,12 @@ class MainController < ApplicationController
     @guest.email = rand(0..100000).to_s + "@" + rand(0..100000).to_s + ".com"
     @guest.birthdate = guestAgeToDate(@guest.age)
     @guest.current_weeks = current_weeks(@guest.birthdate)
-    @guest.gender = "Both sexes"
-    @guest.country = "United States of America"
-    @lifedatum = Lifedatum.where(:country => @guest.country).where(:gender => @guest.gender)[0]
-    @guest.total_life = @lifedatum.age
-    @guest.total_weeks = @guest.total_life*52
 
     respond_to do |format|
       if @guest.save
         login(@guest)
+        current_user.milestones.create({:title => "Birth", :note => "You were introduced to the world", :year => 0, :week=> "1"})
+        current_user.milestones.create({:title => "Supposed Death", :note => "You are on borrowed time now", :year => current_user.total_life, :week=> current_user.total_weeks.to_s})
         format.html { redirect_to root_path, notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
