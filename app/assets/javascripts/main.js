@@ -20,7 +20,8 @@ function showOverlay(event){
 }
 
 
-function getDataContent(){
+function getDataContent(event){
+  event.stopPropagation();
   that = this
   var setName = $(this).text()
   $('div .dataItem').removeClass('dataItem').attr('data-set', '')
@@ -49,8 +50,9 @@ function getWeekFromDay(day){
 
 
 
-function getDatasets(){
+function getDatasets(event){
   that = this
+  $('.dataset').html('- Datasets')
   var promise = $.getJSON("/datasets")
   promise.done(function(data){
     for (var i = 0; i < data.length; i++) {
@@ -63,6 +65,12 @@ function getDatasets(){
   })
   promise.fail(function(){
     console.log('failure to get data from datasets')
+  })
+
+  $(this).one('click', function(){
+    $('.dataset').html('+ Datasets')
+    $('.datasetItem').remove()
+    ready();
   })
 }
 

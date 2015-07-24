@@ -9,13 +9,12 @@
   color: gray;
   margin: 15px;
   font-family: 'Open Sans';
-  a{
-    text-decoration: none;
-  }
   .dataset, .help{
     width: 110px;
     height: 21px;
     text-align: center;
+    cursor: pointer;
+    cursor: hand;
   }
   .dataset:hover, .help:hover{
     text-decoration: underline;
@@ -23,7 +22,8 @@
     color: white;
   }
   .datasetItem {
-    width: 100%;
+    width: 100px;
+    text-align: center;
     font-size: 15px;
     margin: 45px;
     cursor: pointer;
