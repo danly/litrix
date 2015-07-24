@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     logout
+    if @user.username == "Guest" && @user.first_name == @user.last_name && @user.username == @user.first_name
+      @user.destroy
+    end
   end
 
   private

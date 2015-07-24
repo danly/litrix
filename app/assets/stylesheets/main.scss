@@ -162,45 +162,88 @@
 
 }
 
-.landing {
+.guestForm {
   position: relative;
-  display: block;
-  margin: 100px auto;
-  width: 70%;
-  max-width: 1000px;
-  img{
-    width: 100%;
-  }
+  width: 390px;
+  height: 200px;
+  padding: 100px;
+  margin: 0 auto;
+  text-align: center;
 
-
-
-  .create{
-    text-align: center;
-    padding-top: 25px;
-    font-size: 20px;
-    input {
-      color: white;
-      bottom: 0px;
-      height: 50px;
-      margin: 10px;
+  .field {
+    label{
+      font-size: 45px;
+    }
+    #user_age {
+      margin: 25px;
+      font-size: 40px;
+      border-radius: 10px;
       outline: none;
-      font-size: inherit;
-      border: none;
-      background-color: #4798CD;
     }
-    input:active {
-      background-color: #005C99;
-    }
-    
   }
-
-
-
-
-
-
+  input[type="submit"] {
+    color: white;
+    bottom: 0px;
+    height: 35px;
+    outline: none;
+    font-size: 15px;
+    border: none;
+    background-color: #4798CD;
+  }
+  input[type="submit"]:hover{
+    background-color: #A3CCE6;
+  }
+  input[type="submit"]:active {
+    background-color: #005C99;
+  }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .landing {
+//   position: relative;
+//   display: block;
+//   margin: 100px auto;
+//   width: 70%;
+//   max-width: 1000px;
+//   img{
+//     width: 100%;
+//   }
+
+
+
+//   .create{
+//     text-align: center;
+//     padding-top: 25px;
+//     font-size: 20px;
+//     input {
+//       color: white;
+//       bottom: 0px;
+//       height: 50px;
+//       margin: 10px;
+//       outline: none;
+//       font-size: inherit;
+//       border: none;
+//       background-color: #4798CD;
+//     }
+//     input:active {
+//       background-color: #005C99;
+//     }
+    
+//   }
+
+// }
 
 @media (max-width: 973px){
   .datasetsKey {
