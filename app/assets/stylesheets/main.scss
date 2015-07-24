@@ -5,13 +5,34 @@
 .datasetsKey {
   position: absolute;
   top: 100px;
+  width: 99%;
   color: gray;
   margin: 15px;
   font-family: 'Open Sans';
+  a{
+    text-decoration: none;
+  }
+  .dataset, .help{
+    width: 110px;
+    height: 21px;
+    text-align: center;
+  }
+  .dataset:hover, .help:hover{
+    text-decoration: underline;
+    background-color: #4798CD;
+    color: white;
+  }
   .datasetItem {
     width: 100%;
     font-size: 15px;
     margin: 45px;
+    cursor: pointer;
+    cursor: hand;
+  }
+  .datasetItem:hover{
+    text-decoration: underline;
+    background-color: #4798CD;
+    color: white;
   }
   .createDataButton {
     color: white;
@@ -25,7 +46,6 @@
     background-color: #4798CD;
     a{
       color: white;
-      text-decoration: none;
     }
     a:hover{
       background-color: rgba(0,0,0,0);
@@ -34,7 +54,61 @@
   .createDataButton:active {
     background-color: #005C99;
   }
+
+
+
+  .help {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+  }
+
+
+
 }
+
+.helpOverlay{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.74);
+  z-index: 9001;
+  img {
+    position: relative;
+    top: 28%;
+    max-width: 1000px;
+    width: 67%;
+    display: block;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.9);
+  }
+  button.close {
+    position: absolute;
+    background-color: lightgray;
+    border: none;
+    border-radius: 30px;
+    font-size: 22px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    top: 10px;
+    margin: 2px;
+    outline: none;
+    cursor: pointer;
+    cursor: hand;
+  }
+  button.close:hover{
+    transform: scale(1.1)
+  }
+  button.close:active{
+    background-color: gray;
+  }
+}
+
+
 
 .matrixContainer {
   max-width: 728px;
@@ -56,6 +130,8 @@
     margin: 4px;
     vertical-align: top;
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    cursor: hand;
   }
   .lived {
     background-color: limegreen;
@@ -124,6 +200,11 @@
         top: 3px;
         margin: 2px;
         outline: none;
+        cursor: pointer;
+        cursor: hand;
+      }
+      button.close:hover{
+        transform: scale(1.1)
       }
       button.close:active{
         background-color: gray;
@@ -250,7 +331,10 @@
 
 // }
 
-@media (max-width: 973px){
+@media (max-width: 1042px){
+  img{
+    width: 95% !important;
+  }
   .datasetsKey {
     position: inherit;
     .datasetItem {
@@ -260,6 +344,9 @@
       margin: 0px;
       position: inherit;
       display: table-cell;
+    }
+    .help {
+      top: 83px;
     }
   }
   .matrixContainer{
@@ -275,8 +362,14 @@
     }
   }
 }
-@media (max-width: 400px){
 
+@media (max-width: 400px){
+  .datasetItem {
+    display: inline;
+  }
+  .help{
+    display: none;
+  }
   .matrixContainer {
     max-width: 390px;
     .year {

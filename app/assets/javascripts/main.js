@@ -1,14 +1,23 @@
 var ready = function(){
   $('.week').on('click', weekClick)
   $('.datasetsKey').one('click', getDatasets)
+  $('.help').on('click', showOverlay)
   $(document).keyup(function(e){
     if(e.keyCode == 27){
       console.log('pressed', e.keyCode)
       $('.tooltip').remove()
+      $('.helpOverlay').hide()
     }
+  })
+  $('.close').on('click', function(){
+    $('.helpOverlay').hide()
   })
 }
 
+function showOverlay(event){
+  event.stopPropagation();
+  $('.helpOverlay').show()
+}
 
 
 function getDataContent(){

@@ -1,7 +1,14 @@
 <% unless current_user == nil %>
-<div class="datasetsKey">
-  <h2> &#9660; Datasets</h2>
-</div>
+  <div class="datasetsKey">
+    <a href="#"><h2 class='dataset'>+ Datasets</h2></a>
+    <a href="#"><h2 class='help'>Confused ?</h2></a>
+  </div>
+  
+  <div class='helpOverlay'>
+    <button class='close'>X</button>
+    <img src="<%= asset_path 'landing.png' %>">
+  </div>
+
   <div class="matrixContainer">
     <h2 class='matrixTitle'>Your Life</h2>
     <h3 class='percent'><%= @percent %>% lived</h3>
