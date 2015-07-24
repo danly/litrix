@@ -8,4 +8,15 @@ module MainHelper
     arr.sort!.uniq!
     return arr
   end
+
+
+  def guestAgeToDate(age)
+    now = DateTime.now.utc.to_date
+    birthyear = now.year - age
+
+    birthdate = DateTime.new(birthyear, now.month, now.day).to_date
+
+    return birthdate
+  end
+  
 end

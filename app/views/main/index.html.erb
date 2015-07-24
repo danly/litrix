@@ -131,18 +131,17 @@
   </div>
 
 <% else %>  
-  <div class='landing'>
-    <img src="<%= asset_path 'landing.png' %>">
+  <div class='guestForm'>
+    <!-- ask to create a guest user -->
+    <%= form_for @guest, url: "/guest", method: "post" do |f| %>
 
-    <div class='create'>
-      <input type="button" onclick="location.href='<%= new_user_path %>';" value="Create an Account" />
-      to see how long you have left to live.
-    </div>
+      <div class="field">
+        <%= f.label "How old are you?" %><br>
+        <%= f.number_field :age, within: 1...117 %>
+      </div>
+      <%= f.submit "I'm ready to see how long I have left to live"%>
+    <% end %> 
   </div>
-
-
-
-
 <% end %>
 
 <!-- might have issues with older than average death age -->

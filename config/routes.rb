@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: 'main#index'
+  post 'guest', to: 'main#create', as: 'new_guest'
+
+
 
   get 'datasets', to: 'datasets#index', as: 'datasets'
   get 'datasets/new', to: 'datasets#new', as: 'new_dataset'
