@@ -85,7 +85,7 @@
     border-radius: 25px;
     box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.9);
   }
-  button.close {
+  button.closeOverlay {
     position: absolute;
     background-color: lightgray;
     border: none;
@@ -100,10 +100,10 @@
     cursor: pointer;
     cursor: hand;
   }
-  button.close:hover{
+  button.closeOverlay:hover{
     transform: scale(1.1)
   }
-  button.close:active{
+  button.closeOverlay:active{
     background-color: gray;
   }
 }

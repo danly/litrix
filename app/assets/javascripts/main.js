@@ -9,7 +9,7 @@ var ready = function(){
       $('.helpOverlay').hide()
     }
   })
-  $('.close').on('click', function(){
+  $('.closeOverlay').on('click', function(){
     $('.helpOverlay').hide()
   })
 }
