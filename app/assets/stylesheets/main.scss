@@ -111,7 +111,7 @@
 
 
 .matrixContainer {
-  max-width: 728px;
+  max-width: 887px;
   margin: 0px auto;
   margin-top: 125px;
   .matrixTitle{
@@ -125,13 +125,13 @@
     position: relative;
     float: left;
     background-color: lightgray;
-    width: 6px;
-    height: 6px;
-    margin: 4px;
+    width: 7px;
+    height: 7px;
+    margin: 5px;
     vertical-align: top;
-    transition: all 0.2s ease-in-out;
     cursor: pointer;
     cursor: hand;
+    border-radius: 5px;
   }
   .lived {
     background-color: limegreen;
@@ -145,81 +145,82 @@
   }
 
   .week:hover {
-    box-shadow: 0 0 6pt 4pt limegreen;
+    box-sizing: border-box;
+    border: 1px solid green;
   }
 
   .tooltip {
+    position: absolute;
+    background: white;
+    border: 2px solid gray;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.55);
+    width: 250px;
+    min-height: 160px;
+    bottom: 27px;
+    right: -124px;
+    z-index: 10;
+    background-color: slategrey;
+    color: white;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+    .dotInfo{
+      position: relative;
+      text-align: center;
+      width: 80%;
+      margin: 10px;
+      left: 10px;
+      font-size: 17px;
+    }
+
+    .yourMile{
+      color: coral;
+    }
+
+    .lineItem{
+      a{
+        color: white;
+      }
+      a:hover{
+        background-color: coral;
+        opacity: 0.4;
+      }
+    }
+
+    .dataMile{
+      color: bisque;
+    }
+
+    button.close {
       position: absolute;
-      background: white;
-      border: 2px solid gray;
+      background-color: lightgray;
+      border: none;
       border-radius: 10px;
-      box-shadow: 10px 10px 15px 0px rgba(0,0,0,0.55);
-      width: 250px;
-      min-height: 160px;
-      bottom: 27px;
-      right: -124px;
-      z-index: 10;
-      background-color: slategrey;
-      color: white;
-      padding-left: 10px;
-      padding-bottom: 10px;
+      right: 3px;
+      top: 3px;
+      margin: 2px;
+      outline: none;
+      cursor: pointer;
+      cursor: hand;
+    }
+    button.close:hover{
+      transform: scale(1.1)
+    }
+    button.close:active{
+      background-color: gray;
+    }
+    .newMilestone{
+      position: absolute;
+      right: 3px;
+      bottom: 3px;
+      color: lightcoral;
+    }
 
-      .dotInfo{
-        position: relative;
-        text-align: center;
-        width: 80%;
-        margin: 10px;
-        left: 10px;
-        font-size: 17px;
-      }
-
-      .yourMile{
-        color: coral;
-      }
-
-      .lineItem{
-        a{
-          color: white;
-        }
-        a:hover{
-          background-color: coral;
-          opacity: 0.4;
-        }
-      }
-
-      .dataMile{
-        color: bisque;
-      }
-
-      button.close {
-        position: absolute;
-        background-color: lightgray;
-        border: none;
-        border-radius: 10px;
-        right: 3px;
-        top: 3px;
-        margin: 2px;
-        outline: none;
-        cursor: pointer;
-        cursor: hand;
-      }
-      button.close:hover{
-        transform: scale(1.1)
-      }
-      button.close:active{
-        background-color: gray;
-      }
-      .newMilestone{
-        position: absolute;
-        right: 3px;
-        bottom: 3px;
-        color: lightcoral;
-      }
-
-      .toolNote{
-        display: none;
-        padding-top: 3px;
-      }
+    .toolNote{
+      display: none;
+      padding-top: 3px;
+    }
 
     }
 
@@ -333,7 +334,7 @@
 
 // }
 
-@media (max-width: 1042px){
+@media (max-width: 1214px){
   img{
     width: 95% !important;
   }
@@ -359,9 +360,7 @@
       height: 6px;
       margin: 3px;
     }
-    .week:hover {
-      box-shadow: 0 0 6pt 4pt limegreen;
-    }
+
   }
 }
 
@@ -374,17 +373,12 @@
   }
   .matrixContainer {
     max-width: 390px;
-    .year {
-      padding-bottom: 150px;
-      .week {
-        width: 11px;
-        height: 11px;
-        margin: 9px;
-      }
-      .week:hover {
-        box-shadow: 0 0 15pt 9pt limegreen;
-      }
+    .week {
+      width: 11px;
+      height: 11px;
+      margin: 8px;
     }
+
   }
 }
 
