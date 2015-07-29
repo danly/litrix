@@ -14,7 +14,6 @@
     <h3 class='percent'><%= @percent %>% lived</h3>
   <!-- this gives me full age -->
     <% (@user.age).times do |year| %>
-      <div id="year<%= year %>" class="year">
 
         <% 52.times do |week| %>
 
@@ -43,10 +42,7 @@
 
         <% end %>
 
-      </div>
     <% end %>
-
-    <div id="year<%= @user.age %>" class="year">
 
       <% @leftOverWeeksLived.times do |left| %>
           <% id = (left+1) + ((@user.age)*52)%>    
@@ -101,11 +97,8 @@
   
       <% end %>
 
-    </div>
 
     <% (@user.total_life-@user.age-1).times do |year| %>
-      <div id="year<%= @user.age+1 + year %>" class="year">
-
         <% 52.times do |week| %>
           <% id = (week+1) + (year*52) + ((@user.age+1)*52) %>
           <% isMilestone = false %>
@@ -132,7 +125,6 @@
 
         <% end %>
 
-      </div>
     <% end %>
 
   </div>
